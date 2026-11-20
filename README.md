@@ -14,6 +14,7 @@
   <img alt="PowerShell 5.1 and 7" src="https://img.shields.io/badge/PowerShell-5.1%20%7C%207-5391FE">
   <img alt="Single file" src="https://img.shields.io/badge/install-none%2C%20one%20.cmd%20file-brightgreen">
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
+  <a href="https://github.com/site-care/nvidiag/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/site-care/nvidiag"></a>
   <a href="https://buymeacoffee.com/mchncd"><img alt="Buy me a coffee" src="https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=black"></a>
 </p>
 
@@ -27,7 +28,9 @@ Is **NVDisplay.Container.exe** showing **high disk usage** or **constant writes*
 2. **Fixes** it with the community workaround: it stops the Display Container from loading the optional `_nvtopps` plugin that writes the log (`DisableLoad = 1`), restarts the service and **verifies** the result with a new measurement.
 3. **Reverts** the change with one key press, also verified.
 
-No installer, no download of other tools, no telemetry, no network access. Read the code: it is one plain text file.
+No installer, no download of other tools, no telemetry, no network code. Read the code: it is one plain text file.
+
+<p align="center"><a href="https://github.com/site-care/nvidiag/releases/latest/download/nvidiag.cmd"><b>Download nvidiag.cmd (latest release, v4.0)</b></a></p>
 
 <p align="center">
   <img src="docs/nvidiag-bug-detected.png" alt="Nvidiag scan result: NVIDIA driver 621.24 bug detected, NVDisplay.Container.exe writing about 3.6 GB per hour" width="640">
@@ -46,6 +49,7 @@ No installer, no download of other tools, no telemetry, no network access. Read 
 - [FAQ](#faq)
 - [Compatibility](#compatibility)
 - [Sources](#sources)
+- [Support the project](#support-the-project)
 - [Disclaimer and license](#disclaimer)
 
 ## The bug: NVIDIA Display Container rewrites nvlog.nvlgstg
@@ -72,7 +76,7 @@ Nvidiag checks all of this for you in about a minute.
 
 ## Quick start
 
-1. **Download** [`nvidiag.cmd`](nvidiag.cmd) (open it on GitHub and press "Download raw file"), or download the repository as ZIP and extract it.
+1. **Download** [`nvidiag.cmd`](https://github.com/site-care/nvidiag/releases/latest/download/nvidiag.cmd) from the [latest release](https://github.com/site-care/nvidiag/releases/latest) (currently v4.0). Alternatively clone the repository: `git clone https://github.com/site-care/nvidiag.git`.
 2. **Double-click** `nvidiag.cmd`.
 3. Accept the **UAC prompt** (Administrator rights are needed to read the service state and to change the registry).
 4. Keep the PC idle while the 60 second scan runs.
@@ -109,7 +113,12 @@ Nvidiag checks all of this for you in about a minute.
 | `2` | Revert: remove `DisableLoad` (and the `_nvtopps` key if it is empty), restart the service, run a 30 s verification scan |
 | `3` | Run the full diagnostic again |
 | `4` | Custom scan length, 5 to 3600 seconds |
-| `Q` | Quit |
+| `C` | Coffee: opens <https://buymeacoffee.com/mchncd> in your default browser, if you want to support the project |
+| `Q` | Quit (shows a one line support link before exiting) |
+
+<p align="center">
+  <img src="docs/nvidiag-main-menu.png" alt="Nvidiag main menu: apply fix, revert, rescan, custom scan, coffee, quit" width="640">
+</p>
 
 <p align="center">
   <img src="docs/nvidiag-apply-fix.png" alt="Nvidiag applying the _nvtopps DisableLoad fix and restarting NVIDIA Display Container LS" width="640"><br><br>
@@ -199,7 +208,7 @@ Some PCs are not affected. The bug also grows with uptime, so a scan right after
 Nvidiag reads `WriteTransferCount` per process, the same counter Task Manager shows as "I/O write bytes". It counts what the process asks Windows to write, not what lands on the NAND flash. In the original report this counter and the SSD's own counter matched well (515 MB process I/O vs 270 MB total drive writes in 5 minutes).
 
 **Does Nvidiag send any data anywhere?**
-No. It has no network code at all.
+No. It has no network code and sends nothing. The only link it can open is the optional `C` (coffee) menu item, which hands <https://buymeacoffee.com/mchncd> to your default browser when you press it.
 
 **Does it work with NVIDIA Studio drivers, laptops, or Quadro / RTX professional cards?**
 It works on any system where the NVIDIA Display Container LS service exists. The bug reports so far are about GeForce Game Ready 621.14 and 621.24.
@@ -227,13 +236,13 @@ It works on any system where the NVIDIA Display Container LS service exists. The
 
 Bug reports are welcome. Please include a screenshot of the full Nvidiag scan, your GPU, driver version and Windows build. If NVIDIA releases a fixed driver, open an issue so the driver list can be updated.
 
-<a id="disclaimer"></a>
 ## Support the project
 
 If Nvidiag saved your SSD from a few terabytes of pointless writes, you can say thanks with a coffee:
 
 <a href="https://buymeacoffee.com/mchncd"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=mchncd&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee" height="45"></a>
 
+<a id="disclaimer"></a>
 ## Disclaimer
 
 Nvidiag is an independent community project. It is **not affiliated with, endorsed by or supported by NVIDIA Corporation**. NVIDIA, GeForce and related names are trademarks of NVIDIA Corporation. The workaround changes one registry value of an NVIDIA service; use it at your own risk and revert it once NVIDIA ships a fixed driver.
