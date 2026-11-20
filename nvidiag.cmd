@@ -712,6 +712,7 @@ function Show-Menu {
     Draw-MenuItem '2' 'REVERT'      'Remove DisableLoad, restart service, 30 s verify' Yellow
     Draw-MenuItem '3' 'RESCAN'      "Run the full diagnostic again ($Seconds s)" Cyan
     Draw-MenuItem '4' 'CUSTOM SCAN' 'Pick a scan length (5-3600 s)' Blue
+    Draw-MenuItem 'C' 'COFFEE'      'Saved your SSD? Buy me a coffee (opens browser)' Yellow
     Draw-MenuItem 'Q' 'QUIT'        "Exit $AppName" Magenta
     Write-Host ''
 }
@@ -731,7 +732,7 @@ try {
     $running = $true
     while ($running) {
         Show-Menu
-        $choice = ([string](Read-Host '  SELECT [1/2/3/4/Q]')).Trim().ToUpper()
+        $choice = ([string](Read-Host '  SELECT [1/2/3/4/C/Q]')).Trim().ToUpper()
         switch ($choice) {
             '1' {
                 if (Set-NvidiaWorkaround -Enable $true) {
@@ -757,8 +758,13 @@ try {
                     Write-Step 'Please enter a number from 5 to 3600.' Red
                 }
             }
+            'C' {
+                Write-Step 'Thank you! Opening buymeacoffee.com/mchncd ...' Yellow
+                try { Start-Process 'https://buymeacoffee.com/mchncd' } catch { Write-Step 'Could not open the browser. Visit https://buymeacoffee.com/mchncd' Red }
+            }
             'Q' {
                 Write-Step "GAME OVER. Thanks for playing $AppName." Magenta
+                Write-Step 'Did Nvidiag help? Support it: https://buymeacoffee.com/mchncd' Yellow
                 $running = $false
             }
             default { Write-Step 'Unknown choice.' Red }
