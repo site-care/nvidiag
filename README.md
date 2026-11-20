@@ -14,6 +14,7 @@
   <img alt="PowerShell 5.1 and 7" src="https://img.shields.io/badge/PowerShell-5.1%20%7C%207-5391FE">
   <img alt="Single file" src="https://img.shields.io/badge/install-none%2C%20one%20.cmd%20file-brightgreen">
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
+  <a href="https://buymeacoffee.com/mchncd"><img alt="Buy me a coffee" src="https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=black"></a>
 </p>
 
 ---
@@ -227,6 +228,12 @@ It works on any system where the NVIDIA Display Container LS service exists. The
 Bug reports are welcome. Please include a screenshot of the full Nvidiag scan, your GPU, driver version and Windows build. If NVIDIA releases a fixed driver, open an issue so the driver list can be updated.
 
 <a id="disclaimer"></a>
+## Support the project
+
+If Nvidiag saved your SSD from a few terabytes of pointless writes, you can say thanks with a coffee:
+
+<a href="https://buymeacoffee.com/mchncd"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=mchncd&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee" height="45"></a>
+
 ## Disclaimer
 
 Nvidiag is an independent community project. It is **not affiliated with, endorsed by or supported by NVIDIA Corporation**. NVIDIA, GeForce and related names are trademarks of NVIDIA Corporation. The workaround changes one registry value of an NVIDIA service; use it at your own risk and revert it once NVIDIA ships a fixed driver.
